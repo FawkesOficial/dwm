@@ -1,7 +1,11 @@
 /* See LICENSE file for copyright and license details. */
 
+#define BROWSER "firefox"
+#define FILE_EXPLORER "nautilus"
+#define TERMINAL "st"
+
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 5;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
@@ -10,30 +14,43 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+static const char *fonts[]          = {
+    "Noto Sans Mono:style=Regular:size=10:antialias=true:autohint:true",
+    "Font Awesome 6 Free:style=Solid:size=10:antialias=true:autohint:true",
+    "Font Awesome 6 Brands:size=10:antialias=true:autohint:true",
+    "NotoSansMono Nerd Font Mono:size=16:antialias=true:autohint:true"
+};
+static const char dmenufont[]       = "NotoSansMono Nerd Font:size=12:antialias=true:autohint:true";
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#444444";
+static char normfgcolor[]           = "#bbbbbb";
+static char selfgcolor[]            = "#eeeeee";
+static char selbordercolor[]        = "#005577";
+static char selbgcolor[]            = "#005577";
+static char *colors[][3] = {
+       /*               fg           bg           border   */
+       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "", "", "辶", "", "" };
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     switchtotag    isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,             1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,             0,           -1 },
+    /* xprop(1):
+     *  WM_CLASS(STRING) = instance, class
+     *  WM_NAME(STRING) = title
+     */
+    /* class                instance    title         tags mask    switchtotag    isfloating    monitor */
+    { "Gimp",               NULL,       NULL,         0,           0,             1,            -1 },
+    { "discord",            NULL,       " - Discord", 1 << 3,      1,             0,             1 },
+    { "obs",                NULL,       NULL,         1 << 6,      1,             0,             1 },
+    { NULL,                 "ame cmus", NULL,         1 << 7,      1,             0,             1 },
+    { "Spotify",            NULL,       NULL,         1 << 7,      1,             0,             1 },
+    { "Org.gnome.Nautilus", NULL,       NULL,         1 << 2,      1,             0,            -1 },
+    { "code-oss",           NULL,       NULL,         1 << 4,      1,             0,            -1 },
+    { "Signal",             NULL,       NULL,         1 << 3,      1,             0,            -1 },
+    { "mpv",                NULL,       "lofi",       1 << 7,      0,             1,             1 }
 };
 
 /* layout(s) */
@@ -61,13 +78,33 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+/* Power Menu*/
+static const char *powermenu[] = { "/home/fawkes/.scripts/powermenu", NULL };
+
+/* Clipboard Manager */
+static const char *clipmanager[] = { "clipmenu", NULL };
+
+/* Email (FN + F10) */
+static const char *emailcmd[] = { "firefox", "https://mail.google.com/", NULL};
+
+/* Calculator (FN + F12)*/
+static const char *calculator[] = { "st", "-e", "calc", NULL };
+
+#include <X11/XF86keysym.h>
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ Mod4Mask,                     XK_v,      spawn,          {.v = clipmanager } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = powermenu } },
+	{ ControlMask|ShiftMask,        XK_Escape, spawn,          {.v = (const char*[]){ "dm-kill", NULL } } },
+	{ 0,                            XK_Print,  spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png -i") },
+	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){ BROWSER, NULL } } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){ FILE_EXPLORER, NULL } } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -75,20 +112,34 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+	/* Media Keys */
+	{ 0, XF86XK_AudioLowerVolume,   spawn,                     SHCMD("pamixer -d 5") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,                     SHCMD("pamixer -i 5") },
+	{ 0, XF86XK_AudioMute,          spawn,                     SHCMD("pamixer -t") },
+	{ 0, XF86XK_AudioStop,          spawn,                     SHCMD("cmus-remote -C player-stop") },
+	{ 0, XF86XK_AudioPrev,          spawn,                     SHCMD("cmus-remote -C player-prev") },
+	{ 0, XF86XK_AudioPlay,          spawn,                     SHCMD("cmus-remote -C player-pause") },
+	{ 0, XF86XK_AudioNext,          spawn,                     SHCMD("cmus-remote -C player-next") },
+	/* Other Special Keys*/
+	{ 0, XF86XK_Mail,               spawn,                     {.v = emailcmd } },
+	{ 0, XF86XK_HomePage,           spawn,                     {.v = dmenucmd } },
+	{ 0, XF86XK_Calculator,         spawn,                     {.v = calculator } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
