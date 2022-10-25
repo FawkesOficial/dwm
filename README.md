@@ -20,14 +20,11 @@
 
 + Compatibility with `Xresources` and `pywal` for dynamic colors.
 
-
 ## Applied patches
 
-+ Boxdraw
-+ Ligatures
-+ font2
-+ updated to latest version 0.8.4
-
++ allwayscenter
++ statusallmons
++ switchtotag
 
 ## Contact
 
