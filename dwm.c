@@ -1181,6 +1181,7 @@ loadxrdb()
     if (resm != NULL) {
       xrdb = XrmGetStringDatabase(resm);
 
+      // Default entry
       /*if (xrdb != NULL) {
         XRDB_LOAD_COLOR("dwm.normbordercolor", normbordercolor);
         XRDB_LOAD_COLOR("dwm.normbgcolor", normbgcolor);
@@ -1190,15 +1191,26 @@ loadxrdb()
         XRDB_LOAD_COLOR("dwm.selfgcolor", selfgcolor);
       }*/
 
-      if (xrdb != NULL) {
+      // Sugested colorscheme from https://www.youtube.com/watch?v=lkbU0X2Dzps
+      /*if (xrdb != NULL) {
 	XRDB_LOAD_COLOR("dwm.color0", normbordercolor);
 	XRDB_LOAD_COLOR("dwm.color8", normbgcolor);
 	XRDB_LOAD_COLOR("dwm.color0", normfgcolor);
 	XRDB_LOAD_COLOR("dwm.color6", selbordercolor);
 	XRDB_LOAD_COLOR("dwm.color0", selbgcolor);
 	XRDB_LOAD_COLOR("dwm.color14", selfgcolor);
-      }
+      }*/
 
+      // Sugested colorscheme from pywal
+      if (xrdb != NULL) {
+	XRDB_LOAD_COLOR("dwm.color8", normbordercolor);
+	XRDB_LOAD_COLOR("dwm.color0", normbgcolor);
+	XRDB_LOAD_COLOR("dwm.color15", normfgcolor);
+	XRDB_LOAD_COLOR("dwm.color15", selbordercolor);
+	XRDB_LOAD_COLOR("dwm.color2", selbgcolor);
+	XRDB_LOAD_COLOR("dwm.color15", selfgcolor);
+      }
+    
     }
   }
 
