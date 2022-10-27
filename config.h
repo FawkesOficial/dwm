@@ -85,11 +85,11 @@ static const char *termcmd[]  = { "st", NULL };
 /* Power Menu*/
 static const char *powermenu[] = { "dwm-powermenu", NULL };
 
-/* Clipboard Manager */
-static const char *clipmanager[] = { "clipmenu", NULL };
-
 /* Task Manager */
 static const char *taskmanager[] = { "dwm-taskmanager", NULL };
+
+/* Clipboard Manager */
+static const char *clipmanager[] = { "clipmenu", NULL };
 
 /* Email (FN + F10) */
 static const char *emailcmd[] = { "firefox", "https://mail.google.com/", NULL};
