@@ -39,8 +39,8 @@ dist: clean
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin
-	cp -f scripts/dwm-powermenu ${DESTDIR}${PREFIX}/bin
-	cp -f scripts/dwm-taskmanager ${DESTDIR}${PREFIX}/bin
+	cp -f scripts/powermenu ${DESTDIR}${PREFIX}/bin/dwm-powermenu
+	cp -f scripts/taskmanager ${DESTDIR}${PREFIX}/bin/dwm-taskmanager
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-powermenu
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-taskmanager

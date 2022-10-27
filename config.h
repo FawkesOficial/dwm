@@ -83,10 +83,10 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgco
 static const char *termcmd[]  = { "st", NULL };
 
 /* Power Menu*/
-static const char *powermenu[] = { "dwm-powermenu", NULL };
+static const char *powermenu[] = { "dwm-powermenu", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selbordercolor, NULL };
 
 /* Task Manager */
-static const char *taskmanager[] = { "dwm-taskmanager", NULL };
+static const char *taskmanager[] = { "dwm-taskmanager", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selbordercolor, NULL };
 
 /* Clipboard Manager */
 static const char *clipmanager[] = { "clipmenu", NULL };
