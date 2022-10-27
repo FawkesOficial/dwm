@@ -49,4 +49,4 @@
 ## Contact
 
 - [Github](https://github.com/FawkesOficial)
-- [Twitter](https://lukesmith.xyz)
+- [Twitter](https://twitter.com/FawkesOficial)
