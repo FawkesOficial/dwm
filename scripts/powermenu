@@ -1,13 +1,13 @@
 #!/bin/bash
 
 powermenu() {
-	options="cancel\nshutdown\nreboot"
+	options="Cancel\nShutdown\nReboot"
 	selected=$(echo -e $options | dmenu "$@")
-	if [[ $selected = "shutdown" ]]; then
+	if [[ $selected = "Shutdown" ]]; then
 		poweroff
-	elif [[ $selected = "reboot" ]]; then
+	elif [[ $selected = "Reboot" ]]; then
 		reboot
-	elif [[ $selected = "cancel" ]]; then
+	elif [[ $selected = "Cancel" ]]; then
 		return
 	fi
 }
