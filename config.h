@@ -83,10 +83,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgco
 static const char *termcmd[]  = { "st", NULL };
 
 /* Power Menu*/
-static const char *powermenu[] = { "/home/fawkes/.scripts/powermenu", NULL };
+static const char *powermenu[] = { "dwm-powermenu", NULL };
 
 /* Clipboard Manager */
 static const char *clipmanager[] = { "clipmenu", NULL };
+
+/* Task Manager */
+static const char *taskmanager[] = { "dwm-taskmanager", NULL };
 
 /* Email (FN + F10) */
 static const char *emailcmd[] = { "firefox", "https://mail.google.com/", NULL};
@@ -102,7 +105,7 @@ static const Key keys[] = {
 	{ Mod4Mask,                     XK_v,      spawn,          {.v = clipmanager } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = powermenu } },
-	{ ControlMask|ShiftMask,        XK_Escape, spawn,          {.v = (const char*[]){ "dm-kill", NULL } } },
+	{ ControlMask|ShiftMask,        XK_Escape, spawn,          {.v = taskmanager } },
 	{ 0,                            XK_Print,  spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png -i") },
 	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){ FILE_EXPLORER, NULL } } },
