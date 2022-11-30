@@ -47,7 +47,7 @@ static const Rule rules[] = {
     { "obs",                NULL,       NULL,         1 << 6,      1,             0,             1 },
     { NULL,                 "ame cmus", NULL,         1 << 7,      1,             0,             1 },
     { "Spotify",            NULL,       NULL,         1 << 7,      1,             0,             1 },
-    { "Org.gnome.Nautilus", NULL,       NULL,         1 << 2,      1,             0,            -1 },
+    { "org.gnome.Nautilus", NULL,       NULL,         1 << 2,      1,             0,            -1 },
     { "code-oss",           NULL,       NULL,         1 << 4,      1,             0,            -1 },
     { "Signal",             NULL,       NULL,         1 << 3,      1,             0,            -1 },
     { "mpv",                NULL,       "lofi",       1 << 7,      0,             1,             1 }
