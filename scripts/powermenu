@@ -4,9 +4,9 @@ powermenu() {
 	options="Cancel\nShutdown\nReboot"
 	selected=$(echo -e $options | dmenu "$@")
 	if [[ $selected = "Shutdown" ]]; then
-		poweroff
+		sudo poweroff
 	elif [[ $selected = "Reboot" ]]; then
-		reboot
+		sudo reboot
 	elif [[ $selected = "Cancel" ]]; then
 		return
 	fi
