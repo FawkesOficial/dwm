@@ -357,6 +357,9 @@ applyrules(Client *c)
 			if (m)
 				c->mon = m;
 			if (r->switchtotag) {
+				if (r->monitor >= 0 && r->monitor != selmon->num) {
+					focusmon(&(Arg){ .i = r->monitor });
+				}
 				Arg a = { .ui = r->tags };
 				c->switchtotag = selmon->tagset[selmon->seltags];
 				view(&a);
