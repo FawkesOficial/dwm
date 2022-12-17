@@ -41,17 +41,23 @@ install: all
 	cp -f dwm ${DESTDIR}${PREFIX}/bin
 	cp -f scripts/powermenu ${DESTDIR}${PREFIX}/bin/dwm-powermenu
 	cp -f scripts/taskmanager ${DESTDIR}${PREFIX}/bin/dwm-taskmanager
+	cp -f scripts/dmenuunicode ${DESTDIR}${PREFIX}/bin/dwm-dmenuunicode
+	cp -f -r scripts/dmenuunicode-chars ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-powermenu
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-taskmanager
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-dmenuunicode
+	chmod -R 777 ${DESTDIR}${PREFIX}/bin/dmenuunicode-chars
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
 
 uninstall:
-	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
-		${DESTDIR}${MANPREFIX}/man1/dwm.1\
-		${DESTDIR}${PREFIX}/bin/dwm-powermenu\
-		${DESTDIR}${PREFIX}/bin/dwm-taskmanager
+	rm -fr  ${DESTDIR}${PREFIX}/bin/dwm \
+		${DESTDIR}${MANPREFIX}/man1/dwm.1 \
+		${DESTDIR}${PREFIX}/bin/dwm-powermenu \
+		${DESTDIR}${PREFIX}/bin/dwm-taskmanager \
+		${DESTDIR}${PREFIX}/bin/dwm-dmenuunicode \
+		${DESTDIR}${PREFIX}/bin/dmenuunicode-chars
 
 .PHONY: all options clean dist install uninstall

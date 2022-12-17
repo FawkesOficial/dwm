@@ -88,11 +88,14 @@ static const char *powermenu[] = { "dwm-powermenu", "-fn", dmenufont, "-nb", nor
 /* Task Manager */
 static const char *taskmanager[] = { "dwm-taskmanager", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selbordercolor, NULL };
 
+/* Emoji and Unicode Character Picker*/
+static const char *dmenuunicode[] = { "dwm-dmenuunicode", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selbordercolor, NULL };
+
 /* Clipboard Manager */
 static const char *clipmanager[] = { "clipmenu", NULL };
 
 /* Email (FN + F10) */
-static const char *emailcmd[] = { "firefox", "https://mail.google.com/", NULL};
+static const char *emailcmd[] = { BROWSER, "https://mail.google.com/", NULL};
 
 /* Calculator (FN + F12)*/
 static const char *calculator[] = { "st", "-e", "calc", NULL };
@@ -106,6 +109,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = powermenu } },
 	{ ControlMask|ShiftMask,        XK_Escape, spawn,          {.v = taskmanager } },
+	{ Mod4Mask,                     XK_u,      spawn,          {.v = dmenuunicode } },
 	{ 0,                            XK_Print,  spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png -i") },
 	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){ FILE_EXPLORER, NULL } } },

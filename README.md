@@ -13,8 +13,9 @@
 + Fullscreen Applications
 + Printscreen select area and copy to clipboard. Similar to Lightshot on Windows
 + Media Keys: Vol-Up, Vol-Dow, Mute. **For cmus**: Stop, Prev, Play/Pause, Next.
-+ Power Menu.
-+ Task Manager/Task Killer.
++ Power Menu (Requires `dmenu`)
++ Task Manager/Task Killer (Requires `dmenu`)
++ Emoji/Font Awesome and other Unicode characters Menu: Select a character and it will be automatically copied to the clipboard (Requires `dmenu`)
 + Clipboard Manager. Similar to `Win+v` on Windows10. (Requires `clipmenu`. You can find it on Github or in the AUR)
 
 ---
@@ -27,6 +28,7 @@
 + Clipboard Manager: `win+v`
 + Power Menu: `mod+shift+s`
 + Task Manager: `ctrl+shift+esc`
++ Emoji/Unicode Menu: `win+u`
 + Printscreen Select: `PrtSc` (Just hit the PrintScreen key on your keyboard)
 + Open Browser: `mod+w` (Browser defined in **config.h**)
 + Open File Explorer: `mod+e` (File Explorer defined in **config.h**)
@@ -40,7 +42,7 @@
 + [actualfullscreen](https://dwm.suckless.org/patches/actualfullscreen/)
 + [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/)
 + [statusallmons](https://dwm.suckless.org/patches/statusallmons/)
-+ [switchtotag](https://dwm.suckless.org/patches/switchtotag/)
++ [switchtotag](https://dwm.suckless.org/patches/switchtotag/) (slightly modified to support multi-monitor setups. See [this commit](https://github.com/FawkesOficial/dwm/commit/d4c21b5921a1734773a6d59d8b61868d1b2ab495) for more info)
 + [systray](https://dwm.suckless.org/patches/systray/)
 + [xrdb](https://dwm.suckless.org/patches/xrdb/)
 
