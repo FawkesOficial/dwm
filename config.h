@@ -45,7 +45,7 @@ static const Rule rules[] = {
     { "Gimp",               NULL,       NULL,         0,           0,             1,            -1 },
     { "discord",            NULL,       " - Discord", 1 << 3,      1,             0,             1 },
     { "obs",                NULL,       NULL,         1 << 6,      1,             0,             1 },
-    { NULL,                 "ame cmus", NULL,         1 << 7,      1,             0,             1 },
+    { NULL,                 "ame cmus", "cmus",       1 << 7,      1,             0,             1 },
     { "Spotify",            NULL,       NULL,         1 << 7,      1,             0,             1 },
     { "org.gnome.Nautilus", NULL,       NULL,         1 << 2,      1,             0,            -1 },
     { "code-oss",           NULL,       NULL,         1 << 4,      1,             0,            -1 },
