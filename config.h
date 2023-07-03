@@ -51,7 +51,8 @@ static const Rule rules[] = {
     { "code-oss",           NULL,       NULL,         1 << 4,      1,             0,            -1 },
     { "Signal",             NULL,       NULL,         1 << 3,      1,             0,            -1 },
     { "mpv",                NULL,       "lofi",       1 << 7,      0,             1,             1 },
-    { NULL,  "jellyfinmediaplayer",     NULL,         1 << 6,      1,             0,            -1 }
+    { NULL,  "jellyfinmediaplayer",     NULL,         1 << 6,      1,             0,            -1 },
+    { "Minecraft Launcher", NULL,       NULL,         1 << 5,      1,             0,             0 }
 };
 
 /* layout(s) */
