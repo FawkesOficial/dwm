@@ -44,7 +44,7 @@ static const Rule rules[] = {
     /* class                instance    title         tags mask    switchtotag    isfloating    monitor */
     { "Gimp",               NULL,       NULL,         0,           0,             1,            -1 },
     { "discord",            NULL,       " - Discord", 1 << 3,      1,             0,             1 },
-    { "obs",                NULL,       NULL,         1 << 6,      1,             0,             1 },
+    { "obs",                "obs",      "OBS ",       1 << 6,      1,             0,             1 },
     { NULL,                 "ame cmus", "cmus",       1 << 7,      1,             0,             1 },
     { "Spotify",            NULL,       NULL,         1 << 7,      1,             0,             1 },
     { "org.gnome.Nautilus", NULL,       NULL,         1 << 2,      1,             0,            -1 },
@@ -52,7 +52,8 @@ static const Rule rules[] = {
     { "Signal",             NULL,       NULL,         1 << 3,      1,             0,            -1 },
     { "mpv",                NULL,       "lofi",       1 << 7,      0,             1,             1 },
     { NULL,  "jellyfinmediaplayer",     NULL,         1 << 6,      1,             0,            -1 },
-    { "MultiMC", NULL,       NULL,         1 << 5,      1,             0,             0 }
+    { "MultiMC",            NULL,       NULL,         1 << 5,      1,             0,             0 },
+    { "obsidian",           "obsidian", "Obsidian",   1 << 2,      1,             0,            -1 }
 };
 
 /* layout(s) */
