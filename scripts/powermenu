@@ -1,12 +1,23 @@
 #!/bin/bash
 
 powermenu() {
-	options="Cancel\nShutdown\nReboot"
+	pending_updates=$(cat $XDG_CACHE_HOME/updates.txt | wc -l)
+	
+	if [[ $pending_updates -gt 50 ]]; then
+		options="Cancel\nShutdown\nReboot\nUpdate & Shutdown ($pending_updates pending updates)\nUpdate & Reboot ($pending_updates pending updates)"
+	else
+		options="Cancel\nShutdown\nReboot"
+	fi
+
 	selected=$(echo -e $options | dmenu "$@")
 	if [[ $selected = "Shutdown" ]]; then
-		sudo poweroff
+		poweroff
 	elif [[ $selected = "Reboot" ]]; then
-		sudo reboot
+		reboot
+	elif [[ $selected = "Update & Shutdown ($pending_updates pending updates)" ]]; then
+		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && poweroff'
+	elif [[ $selected = "Update & Reboot ($pending_updates pending updates)" ]]; then
+		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && reboot'
 	elif [[ $selected = "Cancel" ]]; then
 		return
 	fi
