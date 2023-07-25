@@ -13,6 +13,7 @@
 + Fullscreen Applications
 + Printscreen select area and copy to clipboard. Similar to Lightshot on Windows
 + Media Keys: Vol-Up, Vol-Dow, Mute. **For cmus**: Stop, Prev, Play/Pause, Next.
++ Autostart: dwm will run `~/.config/dwm/autostart.sh` at start. [See more info below](#Autostart). 
 + Power Menu (Requires `dmenu`)
 + Task Manager/Task Killer (Requires `dmenu`)
 + Emoji/Font Awesome and other Unicode characters Menu: Select a character and it will be automatically copied to the clipboard (Requires `dmenu`)
@@ -37,8 +38,27 @@
 
 ---
 
+## Autostart
+
+1. Create the folder `~/.config/dwm` and the file `~/.config/dwm/autostart.sh`.
+2. Add execution permissions to `~/.config/dwm/autostart.sh`
+```shell
+chmod +x ~/.config/dwm/autostart.sh
+```
+3. Edit the file and make it run whatever you want
+
+>Example `~/.config/dwm/autostart.sh`:
+```shell
+discord &
+obsidian &
+sleep 2; st -n htop -e htop &                         (example of a terminal app)
+```
+
+---
+
 ## Applied patches
 
++ [autostart](https://dwm.suckless.org/patches/autostart/) (modified to look for `autostart.sh` in `~/.config/dwm` instead of `~/.dwm`)
 + [actualfullscreen](https://dwm.suckless.org/patches/actualfullscreen/)
 + [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/)
 + [statusallmons](https://dwm.suckless.org/patches/statusallmons/)
