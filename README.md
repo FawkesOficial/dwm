@@ -13,7 +13,7 @@
 + Fullscreen Applications
 + Printscreen select area and copy to clipboard. Similar to Lightshot on Windows
 + Media Keys: Vol-Up, Vol-Dow, Mute. **For cmus**: Stop, Prev, Play/Pause, Next.
-+ Autostart: dwm will run `~/.config/dwm/autostart.sh` at start. [See more info below](#Autostart). 
++ Autostart: dwm will run `~/.config/dwm/autostart.sh` at start. [See more info below](#autostart). 
 + Power Menu (Requires `dmenu`)
 + Task Manager/Task Killer (Requires `dmenu`)
 + Emoji/Font Awesome and other Unicode characters Menu: Select a character and it will be automatically copied to the clipboard (Requires `dmenu`)
