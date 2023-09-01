@@ -98,7 +98,7 @@ static const char *dmenuunicode[] = { "dwm-dmenuunicode", "-fn", dmenufont, "-nb
 static const char *clipmanager[] = { "clipmenu", NULL };
 
 /* Email (FN + F10) */
-static const char *emailcmd[] = { BROWSER, "https://mail.google.com/", NULL};
+static const char *emailcmd[] = { BROWSER, "https://mail.proton.me/u/0/inbox", NULL};
 
 /* Calculator (FN + F12)*/
 static const char *calculator[] = { "st", "-e", "calc", NULL };
