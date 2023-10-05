@@ -11,13 +11,13 @@ powermenu() {
 
 	selected=$(echo -e $options | dmenu "$@")
 	if [[ $selected = "Shutdown" ]]; then
-		poweroff
+		sudo poweroff
 	elif [[ $selected = "Reboot" ]]; then
-		reboot
+		sudo reboot
 	elif [[ $selected = "Update & Shutdown ($pending_updates pending updates)" ]]; then
-		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && poweroff'
+		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && sudo poweroff'
 	elif [[ $selected = "Update & Reboot ($pending_updates pending updates)" ]]; then
-		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && reboot'
+		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && sudo reboot'
 	elif [[ $selected = "Cancel" ]]; then
 		return
 	fi
