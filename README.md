@@ -6,7 +6,7 @@
 
 ## Added features
 
-+ xrdb/pywal/Xresources compatibilty. Just load Xresources with `xrdb path/to/Xresources` or generate a colorscheme using pywal. Then hit `Mod+F5` to apply the changes.
++ xrdb/pywal/Xresources compatibility. Just load Xresources with `xrdb path/to/Xresources` or generate a colorscheme using pywal. Then hit `Mod+F5` to apply the changes.
 + Systray.
 + Status bar shows up in  all monitors.
 + Switch to the configured tag when a window opens, then switch back when it closes.
@@ -35,6 +35,7 @@
 + Open File Explorer: `mod+e` (File Explorer defined in **config.h**)
 + Toggle Fullscreen: `mod+shift+f`
 + Reload Colorscheme: `mod+F5`
++ Increase/Decrease/Reset Gaps: `mod++`, `mod+-`, `mod+=`
 
 ---
 
@@ -65,6 +66,7 @@ sleep 2; st -n htop -e htop &                         (example of a terminal app
 + [switchtotag](https://dwm.suckless.org/patches/switchtotag/) (slightly modified to support multi-monitor setups. See [this commit](https://github.com/FawkesOficial/dwm/commit/d4c21b5921a1734773a6d59d8b61868d1b2ab495) for more info)
 + [systray](https://dwm.suckless.org/patches/systray/)
 + [xrdb](https://dwm.suckless.org/patches/xrdb/)
++ [fullgaps](https://dwm.suckless.org/patches/fullgaps/)
 
 ---
 
