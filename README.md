@@ -7,7 +7,7 @@
 ## Added features
 
 + xrdb/pywal/Xresources compatibility. Just load Xresources with `xrdb path/to/Xresources` or generate a colorscheme using pywal. Then hit `Mod+F5` to apply the changes.
-+ Systray.
++ Systray(disabled due to it not conforming to the floating bar layout).
 + Status bar shows up in  all monitors.
 + Switch to the configured tag when a window opens, then switch back when it closes.
 + Fullscreen Applications
@@ -67,6 +67,7 @@ sleep 2; st -n htop -e htop &                         (example of a terminal app
 + [systray](https://dwm.suckless.org/patches/systray/)
 + [xrdb](https://dwm.suckless.org/patches/xrdb/)
 + [fullgaps](https://dwm.suckless.org/patches/fullgaps/)
++ [barpadding](https://dwm.suckless.org/patches/fullgaps/)
 
 ---
 
