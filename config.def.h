@@ -56,7 +56,8 @@ static const Rule rules[] = {
     { "mpv",                NULL,       "lofi",       1 << 7,      0,             1,             1 },
     { NULL,  "jellyfinmediaplayer",     NULL,         1 << 6,      1,             0,            -1 },
     { "MultiMC",            NULL,       NULL,         1 << 5,      1,             0,             0 },
-    { "obsidian",           "obsidian", "Obsidian",   1 << 2,      1,             0,             1 }
+    { "obsidian",           "obsidian", "Obsidian",   1 << 2,      1,             0,             1 },
+    { "jetbrains-idea",     NULL,       NULL,         1 << 4,      1,             0,             0 },
 };
 
 /* layout(s) */
