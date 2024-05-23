@@ -58,6 +58,7 @@ static const Rule rules[] = {
     { "MultiMC",            NULL,       NULL,         1 << 5,      1,             0,             0 },
     { "obsidian",           "obsidian", "Obsidian",   1 << 2,      1,             0,             1 },
     { "jetbrains-idea",     NULL,       NULL,         1 << 4,      1,             0,             0 },
+    { "Minecraft Launcher", NULL,       NULL,         1 << 5,      1,             0,             0 },
 };
 
 /* layout(s) */
