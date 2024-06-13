@@ -45,7 +45,7 @@ static const Rule rules[] = {
      *  WM_NAME(STRING) = title
      */
     /* class                instance    title         tags mask    switchtotag    isfloating    monitor */
-    { "Gimp",               NULL,       NULL,         0,           0,             1,            -1 },
+    { "Gimp",               NULL,       NULL,         0,           0,             0,            -1 },
     { "discord",            NULL,       "Discord",    1 << 3,      1,             0,             1 },
     { "obs",                "obs",      "OBS ",       1 << 6,      1,             0,             1 },
     { NULL,                 "cmus",     "cmus",       1 << 7,      1,             0,             1 },
