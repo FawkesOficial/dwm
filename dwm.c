@@ -125,6 +125,7 @@ struct Client {
 	int bw, oldbw;
 	unsigned int tags;
 	unsigned int switchtotag;
+    int switchtotagmon;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
 	Client *next;
 	Client *snext;
@@ -373,6 +374,7 @@ applyrules(Client *c)
 				}
 				Arg a = { .ui = r->tags };
 				c->switchtotag = selmon->tagset[selmon->seltags];
+                c->switchtotagmon = r->monitor;
 				view(&a);
 
 				focusmon(&(Arg){ .i = prevmon });
@@ -2160,6 +2162,17 @@ unmanage(Client *c, int destroyed)
 	Monitor *m = c->mon;
 	XWindowChanges wc;
 
+    if (c->switchtotag && c->switchtotagmon) {
+        Monitor *prevmon = selmon;
+
+        // selmon = c->mon;
+        focusmon(&(Arg){ .i = c->switchtotagmon });
+		Arg a = { .ui = c->switchtotag };
+		view(&a);
+        // selmon = prevmon;
+        focusmon(&(Arg){ .i = prevmon->num });
+	}
+
 	detach(c);
 	detachstack(c);
 	if (!destroyed) {
@@ -2178,10 +2191,6 @@ unmanage(Client *c, int destroyed)
 	focus(NULL);
 	updateclientlist();
 	arrange(m);
-	if (c->switchtotag) {
-		Arg a = { .ui = c->switchtotag };
-		view(&a);
-	}
 }
 
 void
