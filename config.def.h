@@ -59,6 +59,7 @@ static const Rule rules[] = {
     { "obsidian",           "obsidian", "Obsidian",   1 << 2,      1,             0,             1 },
     { "jetbrains-idea",     NULL,       NULL,         1 << 4,      1,             0,             0 },
     { "jetbrains-pycharm",  NULL,       NULL,         1 << 4,      1,             0,             0 },
+    { "yazi",               NULL,       NULL,         1 << 2,      1,             0,            -1 },
 };
 
 /* layout(s) */
@@ -120,7 +121,7 @@ static const Key keys[] = {
 	{ Mod4Mask,                     XK_u,      spawn,          {.v = dmenuunicode } },
 	{ 0,                            XK_Print,  spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png -i") },
 	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){ BROWSER, NULL } } },
-	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){ FILE_EXPLORER, NULL } } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){ "st", "-c", "yazi", "-e", "yazi", NULL } } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
