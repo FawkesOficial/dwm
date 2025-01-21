@@ -59,6 +59,8 @@ static const Rule rules[] = {
     { "obsidian",           "obsidian", "Obsidian",   1 << 2,      1,             0,             1 },
     { "jetbrains-idea",     NULL,       NULL,         1 << 4,      1,             0,             0 },
     { "jetbrains-pycharm",  NULL,       NULL,         1 << 4,      1,             0,             0 },
+    { "yazi",               NULL,       NULL,         1 << 2,      1,             0,            -1 },
+    { "vesktop",            NULL,       NULL,         1 << 3,      1,             0,             1 },
 };
 
 /* layout(s) */
