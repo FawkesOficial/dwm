@@ -1,7 +1,7 @@
 #!/bin/bash
 
 powermenu() {
-	pending_updates=$(cat $XDG_CACHE_HOME/updates.txt | wc -l)
+	pending_updates=$(checkupdates | wc -l)
 	
 	if [[ $pending_updates -gt 50 ]]; then
 		options="Cancel\nShutdown\nReboot\nUpdate & Shutdown ($pending_updates pending updates)\nUpdate & Reboot ($pending_updates pending updates)"
