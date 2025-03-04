@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# note: change all of this to your liking.
+#       change the icons, option names and
+#       commands to what you prefer.
+
+
 opt_cancel="  cancel"
 opt_poweroff="  poweroff"
 opt_reboot="  reboot"
