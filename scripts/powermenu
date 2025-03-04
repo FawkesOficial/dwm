@@ -1,26 +1,39 @@
 #!/bin/bash
 
-powermenu() {
-	pending_updates=$(checkupdates | wc -l)
-	
-	if [[ $pending_updates -gt 50 ]]; then
-		options="Cancel\nShutdown\nReboot\nUpdate & Shutdown ($pending_updates pending updates)\nUpdate & Reboot ($pending_updates pending updates)"
-	else
-		options="Cancel\nShutdown\nReboot"
-	fi
+# note: change all of this to your liking.
+#       change the icons, option names and
+#       commands to what you prefer.
 
-	selected=$(echo -e $options | dmenu "$@")
-	if [[ $selected = "Shutdown" ]]; then
-		sudo poweroff
-	elif [[ $selected = "Reboot" ]]; then
-		sudo reboot
-	elif [[ $selected = "Update & Shutdown ($pending_updates pending updates)" ]]; then
-		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && sudo poweroff'
-	elif [[ $selected = "Update & Reboot ($pending_updates pending updates)" ]]; then
-		st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && sudo reboot'
-	elif [[ $selected = "Cancel" ]]; then
-		return
-	fi
+
+opt_cancel="  cancel"
+opt_poweroff="  poweroff"
+opt_reboot="  reboot"
+opt_update_poweroff="󰚰  update & $opt_poweroff"
+opt_update_reboot="󰚰  update & $opt_reboot"
+
+run_cmd() {
+    selected="$1"
+
+    case "$selected" in
+        "$opt_poweroff"*) sudo poweroff ;;
+        "$opt_reboot"*) sudo reboot ;;
+        "$opt_update_poweroff"*) st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && sudo poweroff' ;;
+        "$opt_update_reboot"*) st -e zsh -c 'yay -Syu --noconfirm && sleep 3 && sudo reboot' ;;
+        "$opt_cancel"*) return ;;
+    esac
+}
+
+powermenu() {
+    pending_updates=$(checkupdates | wc -l)
+
+    options="$opt_cancel\n$opt_poweroff\n$opt_reboot"
+
+    if [[ $pending_updates -ge 50 ]]; then
+        options+="\n$opt_update_poweroff ($pending_updates pending updates)\n$opt_update_reboot ($pending_updates pending updates)"
+    fi
+
+    selected=$(printf "$options" | dmenu "$@")
+    run_cmd "$selected"
 }
 
 powermenu "$@"
