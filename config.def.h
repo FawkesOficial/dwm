@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BROWSER "firefox"
+#define BROWSER "firefox-esr"
 #define FILE_EXPLORER "nautilus"
 #define TERMINAL "st"
 
