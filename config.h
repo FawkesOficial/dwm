@@ -62,6 +62,7 @@ static const Rule rules[] = {
     { "jetbrains-pycharm",  NULL,       NULL,         1 << 4,      1,             0,             0 },
     { "yazi",               NULL,       NULL,         1 << 2,      1,             0,            -1 },
     { "vesktop",            NULL,       NULL,         1 << 3,      1,             0,             1 },
+    { "FreeTube",           NULL,       NULL,         1 << 6,      1,             0,            -1 },
 };
 
 /* layout(s) */
@@ -121,6 +122,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = powermenu } },
 	{ ControlMask|ShiftMask,        XK_Escape, spawn,          {.v = taskmanager } },
 	{ Mod4Mask,                     XK_u,      spawn,          {.v = dmenuunicode } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ "freetube", NULL } } },
 	{ 0,                            XK_Print,  spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png -i") },
 	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){ "st", "-c", "yazi", "-e", "yazi", NULL } } },
