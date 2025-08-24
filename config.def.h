@@ -149,7 +149,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_plus,  setgaps,        {.i = +1 } },
+	{ MODKEY,                       XK_plus,   setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 	/* Media Keys */
@@ -164,6 +164,7 @@ static const Key keys[] = {
 	{ 0, XF86XK_Mail,               spawn,                     {.v = emailcmd } },
 	{ 0, XF86XK_HomePage,           spawn,                     {.v = dmenucmd } },
 	{ 0, XF86XK_Calculator,         spawn,                     {.v = calculator } },
+	{ Mod4Mask,                     XK_l,      spawn,          {.v = (const char*[]){ "slock", NULL } } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
